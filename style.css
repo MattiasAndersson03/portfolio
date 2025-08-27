@@ -72,3 +72,12 @@ footer {
   margin-top: 2rem;
   background: #eee;
 }
+
+h4 .status {
+  display: block;       
+  font-size: 0.9em;     
+  font-style: italic;   
+  color: gray;          
+  margin-top: 4px;      
+}
+
