@@ -81,3 +81,55 @@ h4 .status {
   margin-top: 4px;      
 }
 
+/* Kontaktformulär */
+#contact form {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  max-width: 500px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+#contact form label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #333;
+}
+
+#contact form input,
+#contact form textarea {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  resize: none; 
+}
+
+#contact form input:focus,
+#contact form textarea:focus {
+  border-color: #666;
+  outline: none;
+}
+
+#contact form button {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#contact form button:hover {
+  background: #555;
+}
+
+#form-status {
+  font-size: 0.85rem;
+  color: #555;
+}
