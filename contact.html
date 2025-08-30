@@ -23,7 +23,7 @@
       <p>Email: <a href="mailto:mattias0306@outlook.com">mattias0306@outlook.com</a></p>
       <p>LinkedIn: <a href="https://www.linkedin.com/in/mattias-andersson-73b176255/" target="_blank" rel="noopener noreferrer">linkedin.com/in/mattias-andersson</a></p>
 
-      <!-- Kontaktformulär -->
+      <!-- Contact form -->
       <form id="contact-form" action="https://formspree.io/f/movnvjza" method="POST">
         <label>
           Name
@@ -40,10 +40,10 @@
           <textarea name="message" rows="6" required></textarea>
         </label>
 
-        <!-- Honeypot (spam-skydd) -->
+        <!-- Honeypot (spam protection) -->
         <input type="text" name="_gotcha" style="display:none">
 
-        <button type="submit">Skicka</button>
+        <button type="submit">Send</button>
         <p id="form-status" aria-live="polite"></p>
       </form>
     </section>
@@ -59,7 +59,7 @@
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      status.textContent = "Skickar...";
+      status.textContent = "Sending...";
       const data = new FormData(form);
 
       try {
@@ -71,13 +71,13 @@
 
         if (res.ok) {
           form.reset();
-          status.textContent = "Tack! Ditt meddelande är skickat.";
+          status.textContent = "Thank you! Your message has been sent.";
         } else {
           const err = await res.json().catch(() => ({}));
-          status.textContent = err.errors?.[0]?.message || "Något gick fel. Försök igen.";
+          status.textContent = err.errors?.[0]?.message || "Something went wrong. Please try again.";
         }
       } catch (error) {
-        status.textContent = "Nätverksfel. Försök igen.";
+        status.textContent = "Network problem. Please try again.";
       }
     });
   </script>
