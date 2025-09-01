@@ -34,7 +34,7 @@ nav a:hover {
 
 main {
   padding: 1rem;
-  max-width: 1000px;
+  max-width: 1500px;
   margin: 0 auto;
 }
 
@@ -45,7 +45,7 @@ main {
 .grid {
   display: grid;
   gap: 1.5rem;
-  grid-template-columns: repeat(2, 1fr); /* två kolumner */
+  grid-template-columns: repeat(3, 1fr); /* två kolumner */
 }
 
 .card {
