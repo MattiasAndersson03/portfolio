@@ -40,6 +40,9 @@ main {
 
 #hero {
   margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2rem;
+  padding-bottom: 100px;
 }
 
 .grid {
