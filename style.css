@@ -82,6 +82,21 @@ footer {
   background: #eee;
 }
 
+.social-links {
+  display: flex;
+  justify-content: center; /* centrerar ikonerna */
+  gap: 2rem; /* avstånd mellan ikonerna */
+  margin-top: 1rem;
+}
+
+.social-links img {
+  transition: transform 0.2s;
+}
+
+.social-links img:hover {
+  transform: scale(1.2);
+}
+
 h4 .status {
   display: block;       
   font-size: 0.9em;     
