@@ -20,10 +20,7 @@
   <main>
     <section id="contact">
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:mattias0306@outlook.com">mattias0306@outlook.com</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/mattias-andersson-73b176255/" target="_blank" rel="noopener noreferrer">linkedin.com/in/mattias-andersson</a></p>
 
-      <!-- Contact form -->
       <form id="contact-form" action="https://formspree.io/f/movnvjza" method="POST">
         <label>
           Name
@@ -50,8 +47,21 @@
   </main>
 
   <footer>
-    <p>© 2025 Mattias Andersson</p>
-  </footer>
+  <div id="contact">
+    <h2>Contact</h2>
+    <div class="social-links">
+      <a href="mailto:mattias0306@outlook.com">
+        <img src="footer_images/email.png" alt="E-post" width="40" height="40">
+      </a>
+      <a href="https://www.linkedin.com/in/mattias-andersson-73b176255/" 
+         target="_blank" 
+         rel="noopener noreferrer">
+        <img src="footer_images/linkedin.png" alt="LinkedIn" width="40" height="40">
+      </a>
+    </div>
+  </div>
+  <p>© 2025 Mattias Andersson</p>
+</footer>
 
   <script>
     const form = document.getElementById("contact-form");
