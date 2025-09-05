@@ -36,6 +36,7 @@ main {
   padding: 1rem;
   max-width: 1500px;
   margin: 0 auto;
+  flex: 1;
 }
 
 #hero {
@@ -77,10 +78,13 @@ main {
 
 footer {
   text-align: center;
-  padding: 1rem;
+  
   margin-top: 2rem;
   background: #eee;
+  
 }
+
+
 
 .social-links {
   display: flex;
