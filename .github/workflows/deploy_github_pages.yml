@@ -1,7 +1,7 @@
-name: Deploy Pages (manual)
+name: Deploy Github Pages (manual)
 
 on:
-  workflow_dispatch: {} 
+  workflow_dispatch: {}   
 
 permissions:
   contents: read
@@ -10,23 +10,28 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: true
+  cancel-in-progress: true   
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Build site
-        run: |
-          npm ci
-          npm run build
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./_site
 
   deploy:
     needs: build
@@ -35,5 +40,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - id: deployment
+      - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
