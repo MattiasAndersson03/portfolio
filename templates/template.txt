@@ -1,0 +1,18 @@
+# Template for projects 
+ <article class="card">
+          <h4>
+            Project Name – Technology
+            <span class="status">Optional status</span>
+          </h4>
+
+          <img src="images/projektbild.png" alt="Project image">
+
+          <p>
+            Description of the project. What does it do? What technology is used? What is unique?
+          </p>
+
+          <a href="https://github.com/YOURUSERNAME/YOURREPO" target="_blank" class="github-link">
+            🔗 View on GitHub
+          </a>
+        </article>
+# End of Template
