@@ -1,4 +1,4 @@
-# Template for projects 
+# Template for projects!
  <article class="card">
           <h4>
             Project Name – Technology
