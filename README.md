@@ -17,7 +17,7 @@ The site is built with **HTML, CSS, and JavaScript**.
 ### Hosting / Infrastructure
 - **Custom domain** registered at **Loopia**
 - **DNS & CDN** handled by **Cloudflare** (TLS, caching, redirects)
-- **Static site hosting** on **GitHub Pages** with automatic deploys on push
+- **Static site hosting** on **GitHub Pages** with automatic deployment 1 time a day
 
 ## Live Version
 👉 [Portfolio Link](https://mattiasandersson03.github.io/portfolio/index.html) 
