@@ -1,0 +1,43 @@
+name: Simple Analytics -> Supabase Import
+
+on:
+  schedule:
+    - cron: '0 22 * * *'
+  workflow_dispatch:
+    inputs:
+      start:
+        description: "Start date (YYYY-MM-DD). Default: yesterday (UTC)"
+        required: false
+      end:
+        description: "End date (YYYY-MM-DD). Default: yesterday (UTC)"
+        required: false
+      hostname:
+        description: "SA hostname (default from secrets)"
+        required: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Import data
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SA_API_KEY: ${{ secrets.SA_API_KEY }}
+
+          SA_HOSTNAME: ${{ github.event.inputs.hostname || secrets.SA_HOSTNAME }}
+          START_DATE: ${{ github.event.inputs.start }}
+          END_DATE: ${{ github.event.inputs.end }}
+          SA_TIMEZONE: "UTC"
+          SA_ROBOTS: "false"
+        run: npm run import
