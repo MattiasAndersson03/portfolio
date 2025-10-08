@@ -18,10 +18,10 @@ The site is built with **HTML, CSS, and JavaScript**.
 - **Custom domain** registered at **Loopia**
 - **DNS & CDN** handled by **Cloudflare** (TLS, caching, redirects)
 - **Static site hosting** on **GitHub Pages** with automatic deployment 1 time a day
-- **Statictics collected from simple analytics
+- **Statictics collected from simple analytics 
 
 ## Live Version
-👉 [Portfolio Link](https://mattiasandersson03.github.io/portfolio/index.html) 
+[Portfolio Link](https://mattiasandersson03.github.io/portfolio/index.html) 
 
 ## Contact
 - 📧 [mattias0306@outlook.com](mailto:mattias0306@outlook.com)  
