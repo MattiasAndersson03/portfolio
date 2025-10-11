@@ -1,20 +1,76 @@
-/* style.css */
+/* =========================
+   THEME TOKENS
+   ========================= */
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --muted: #52525b;
+  --accent: #0ea5e9;
 
+  --surface: #ffffff;       /* cards, form backgrounds */
+  --surface-2: #f3f4f6;     /* header/footer bg, subtle sections */
+  --line: #e5e7eb;          /* borders, grid lines (light) */
+  --line-strong: #d1d5db;
+
+  --shadow: 0 2px 5px rgba(0,0,0,0.06);
+}
+
+:root.dark {
+  --bg: #0b0b0c;
+  --text: #f5f5f5;
+  --muted: #a1a1aa;
+  --accent: #38bdf8;
+
+  --surface: #111114;
+  --surface-2: #0f0f12;
+  --line: #262626;
+  --line-strong: #303030;
+
+  --shadow: 0 2px 5px rgba(0,0,0,0.35);
+}
+
+/* =========================
+   BASE
+   ========================= */
+html, body { height: 100%; }
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
-  background: #f9f9f9;
-  color: #333;
+  background: var(--bg);
+  color: var(--text);
+  position: relative;
+  transition: background-color .3s ease, color .3s ease;
 }
 
+/* links */
+a { color: var(--accent); }
+a:hover { opacity: .9; }
+
+/* headings inherit text color; adjust muted text */
+h4 .status {
+  display: block;
+  font-size: 0.9em;
+  font-style: italic;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* header nav */
 header {
-  background: #333;
-  color: #fff;
+  background: var(--surface-2);
+  color: var(--text);
   padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;              /* spacing between links and button */
 }
 
 header h1 {
@@ -23,15 +79,43 @@ header h1 {
 }
 
 nav a {
-  color: #fff;
+  color: var(--text);
   text-decoration: none;
   margin-left: 1rem;
+  opacity: .85;
 }
+nav a:hover { text-decoration: underline; opacity: 1; }
 
-nav a:hover {
-  text-decoration: underline;
+/* Theme toggle */
+#theme-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px; height: 30px;
+  border: 1px solid var(--text);
+  border-radius: 9999px;
+  background: var(--surface-2);
+  color: var(--text);
+  cursor: pointer;
+  overflow: hidden;
+  margin-left: 10px;
+  transform: translateY(1px);
+  transition: background-color .3s ease, border-color .3s ease, color .3s ease;
 }
+#theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+#theme-toggle .icon {
+  position: absolute;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: transform .4s ease, opacity .4s ease;
+}
+#theme-toggle .sun { opacity: 1; transform: translateY(0); }
+#theme-toggle .moon { opacity: 0; transform: translateY(20px); }
+:root.dark #theme-toggle .sun { opacity: 0; transform: translateY(-20px); }
+:root.dark #theme-toggle .moon { opacity: 1; transform: translateY(0); }
 
+/* layout */
 main {
   padding: 1rem;
   max-width: 1500px;
@@ -44,126 +128,126 @@ main {
   text-align: center;
   font-size: 2rem;
   padding-bottom: 100px;
+  color: var(--text);
 }
 
+/* grids */
 .grid {
   display: grid;
   gap: 1.5rem;
   grid-template-columns: repeat(3, 1fr);
 }
-
 .grid_index {
   display: grid;
   gap: 1.5rem;
   grid-template-columns: repeat(2, 1fr);
 }
 
+/* cards */
 .card {
-  background: #fff;
+  background: var(--surface);
   padding: 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--line);
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  box-shadow: var(--shadow);
 }
-
 .card img {
   width: 100%;
   height: auto;
   border-radius: 4px;
 }
+.card h3 { margin-top: 0.5rem; color: var(--text); }
 
-.card h3 {
-  margin-top: 0.5rem;
-}
-
+/* footer */
 footer {
   text-align: center;
-  
   margin-top: 2rem;
-  background: #eee;
-  
+  background: var(--surface-2);
+  border-top: 1px solid var(--line);
+  color: var(--text);
+  padding: 1rem 0;
 }
 
-
-
+/* social icons */
 .social-links {
   display: flex;
-  justify-content: center; /* centrerar ikonerna */
-  gap: 2rem; /* avstånd mellan ikonerna */
+  justify-content: center;
+  gap: 2rem;
   margin-top: 1rem;
 }
+.social-links img { transition: transform 0.2s; }
+.social-links img:hover { transform: scale(1.2); }
 
-.social-links img {
-  transition: transform 0.2s;
-}
-
-.social-links img:hover {
-  transform: scale(1.2);
-}
-
-h4 .status {
-  display: block;       
-  font-size: 0.9em;     
-  font-style: italic;   
-  color: gray;          
-  margin-top: 4px;      
-}
-
+/* about */
 .about-me {
   margin-top: 1rem;
   line-height: 1.5;
   font-size: 20px;
+  color: var(--text);
 }
 
-/* Contact form */
+/* contact form */
 #contact form {
-  background: #fff;
+  background: var(--surface);
+  color: var(--text);
   padding: 1rem;
   border-radius: 6px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--line);
   max-width: 500px;
   margin: 2rem auto;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
 }
-
 #contact form label {
   font-size: 0.9rem;
   font-weight: bold;
-  color: #333;
+  color: var(--text);
 }
-
 #contact form input,
 #contact form textarea {
+  background: var(--surface);
+  color: var(--text);
   padding: 0.6rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--line-strong);
   border-radius: 4px;
   font-size: 1rem;
-  resize: none; 
+  resize: none;
 }
-
+#contact form input::placeholder,
+#contact form textarea::placeholder {
+  color: var(--muted);
+}
 #contact form input:focus,
 #contact form textarea:focus {
-  border-color: #666;
+  border-color: var(--accent);
   outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent);
 }
-
 #contact form button {
-  background: #333;
-  color: #fff;
+  background: var(--text);
+  color: var(--bg);
   border: none;
   padding: 0.7rem;
   border-radius: 4px;
   font-size: 1rem;
   cursor: pointer;
 }
-
 #contact form button:hover {
-  background: #555;
+  filter: brightness(1.05);
+}
+#form-status { font-size: 0.85rem; color: var(--muted); }
+
+/* grid background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-size: 35px 35px;
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
 }
 
-#form-status {
-  font-size: 0.85rem;
-  color: #555;
-}
