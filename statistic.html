@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Statictic</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Statictic</h1>
+    <p class="note">Minimal CSV viewer for Simple Analytics — no secrets, no libraries.</p>
+
+    <div class="controls">
+      <span id="status" class="status"></span>
+    </div>
+
+    <div class="table-wrap">
+      <table id="table">
+        <thead></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script>
+    // CSV endpoint from Simple Analytics
+    const API_URL = "https://dashboard.simpleanalytics.com/api/export/datapoints?version=5&format=csv&hostname=mattiasdev.se&start=2025-09-01&end=2025-09-30&robots=false&timezone=UTC&fields=added_iso%2Ccountry_code%2Cdevice_type%2Cdocument_referrer%2Cduration_seconds%2Cis_unique%2Cpath%2Cutm_source&type=pageviews";
+
+    const els = {
+      status: document.getElementById('status'),
+      thead: document.querySelector('#table thead'),
+      tbody: document.querySelector('#table tbody'),
+    };
+
+    window.addEventListener('DOMContentLoaded', loadAndRender);
+
+    async function loadAndRender() {
+      els.status.textContent = "Loading…";
+      try {
+        const res = await fetch(API_URL);
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const csv = await res.text();
+        const { headers, rows } = parseCsv(csv);
+        renderTable(headers, rows);
+        els.status.textContent = `Loaded ${rows.length} rows`;
+      } catch (e) {
+        console.error(e);
+        els.status.textContent = "Error: " + e.message;
+      }
+    }
+
+    // simple CSV parser (handles commas + quoted values)
+    function parseCsv(text) {
+      const lines = text.replace(/\r/g, "").split("\n").filter(Boolean);
+      if (!lines.length) return { headers: [], rows: [] };
+      const headers = splitCsvLine(lines[0]);
+      const rows = lines.slice(1).map(line => {
+        const cols = splitCsvLine(line);
+        return headers.map((_, i) => cols[i] ?? "");
+      });
+      return { headers, rows };
+    }
+
+    function splitCsvLine(line) {
+      const out = [];
+      let cur = "", inQuote = false;
+      for (let i = 0; i < line.length; i++) {
+        const ch = line[i], next = line[i+1];
+        if (ch === '"') {
+          if (inQuote && next === '"') { cur += '"'; i++; }
+          else inQuote = !inQuote;
+        } else if (ch === ',' && !inQuote) {
+          out.push(cur); cur = "";
+        } else {
+          cur += ch;
+        }
+      }
+      out.push(cur);
+      return out;
+    }
+
+    function renderTable(headers, rows) {
+      if (!headers.length) {
+        els.thead.innerHTML = "";
+        els.tbody.innerHTML = "<tr><td>No data</td></tr>";
+        return;
+      }
+      els.thead.innerHTML = "<tr>" + headers.map(h => `<th>${escapeHtml(h)}</th>`).join("") + "</tr>";
+      els.tbody.innerHTML = rows.map(r => "<tr>" + r.map(v => `<td>${escapeHtml(v)}</td>`).join("") + "</tr>").join("");
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[c]));
+    }
+  </script>
+</body>
+</html>
