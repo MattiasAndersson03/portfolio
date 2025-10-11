@@ -1,8 +1,8 @@
 name: Simple Analytics -> Supabase Import
 
 on:
-  schedule:
-    - cron: '0 22 * * *'
+  #schedule:
+    #- cron: '0 22 * * *'
   workflow_dispatch:
     inputs:
       start:
