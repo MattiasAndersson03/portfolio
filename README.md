@@ -7,7 +7,7 @@ The site is built with **HTML, CSS, and JavaScript**.
 - **Home** - Highlights some of my featured projects 
 - **About Me** – A short introduction  
 - **Projects** – Examples of my work and code  
-- **Contact** – Links to email and LinkedIn  
+- **Contact** – Includes links to email and LinkedIn, along with a small contact box
 
 ## Tech Stack
 - HTML5 for structure  
