@@ -1,7 +1,7 @@
 # Portfolio – Mattias Andersson
 
 This is my personal portfolio showcasing my projects, skills, and contact information.  
-The site is built with **HTML, CSS, and JavaScript**.
+The site is built with. **HTML, CSS, and JavaScript**.
 
 ## Sections
 - **Home** - Highlights some of my featured projects 
