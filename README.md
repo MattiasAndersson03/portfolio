@@ -1,13 +1,13 @@
 # Portfolio – Mattias Andersson
 
 This is my personal portfolio showcasing my projects, skills, and contact information.  
-The site is built with **HTML, CSS, and JavaScript**.
+The site is built with. **HTML, CSS, and JavaScript**.
 
 ## Sections
 - **Home** - Highlights some of my featured projects 
 - **About Me** – A short introduction  
 - **Projects** – Examples of my work and code  
-- **Contact** – Links to email and LinkedIn  
+- **Contact** – Includes links to email and LinkedIn, along with a small contact box
 
 ## Tech Stack
 - HTML5 for structure  
@@ -18,9 +18,10 @@ The site is built with **HTML, CSS, and JavaScript**.
 - **Custom domain** registered at **Loopia**
 - **DNS & CDN** handled by **Cloudflare** (TLS, caching, redirects)
 - **Static site hosting** on **GitHub Pages** with automatic deployment 1 time a day
+- Statictics collected from **Simple Analytics** 
 
 ## Live Version
-👉 [Portfolio Link](https://mattiasandersson03.github.io/portfolio/index.html) 
+[Portfolio Link](https://mattiasandersson03.github.io/portfolio/index.html) 
 
 ## Contact
 - 📧 [mattias0306@outlook.com](mailto:mattias0306@outlook.com)  
