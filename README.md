@@ -6,13 +6,13 @@ The site is built with. **HTML, CSS, and JavaScript**.
 ## Sections
 - **Home** - Highlights some of my featured projects 
 - **About Me** – A short introduction  
-- **Projects** – Examples of my work and code  
+- **Projects** – Examples of my work and code
 - **Contact** – Includes links to email and LinkedIn, along with a small contact box
 
 ## Tech Stack
 - HTML5 for structure  
 - CSS3 for design and layout  
-- JavaScript (if interactivity is included)  
+- JavaScript
 
 ### Hosting / Infrastructure
 - **Custom domain** registered at **Loopia**
